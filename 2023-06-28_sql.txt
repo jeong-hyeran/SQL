@@ -1,0 +1,63 @@
+create table phonebook (
+    name    varchar2(100),
+    age     number,
+    pnum    varchar2(20)
+);
+
+select * from tab;
+desc phonebook;
+
+insert into phonebook values ('이지은', 31, '010-1111-1111');
+insert into phonebook values ('홍진호', 42, '010-2222-2222');
+insert into phonebook values ('나단비', 5, '010-3333-3333');
+insert into phonebook values ('김지수', 29, '010-5555-5555');
+
+select * from phonebook;
+select name from phonebook;
+select name, age from phonebook;
+select * from phonebook where name = '이지은';
+select * from phonebook where age > 10;
+select * from phonebook where age between 20 and 40;
+select * from phonebook where name like '%비%';
+
+commit;
+
+
+
+--------------------
+
+
+drop table student purge;
+
+create table student (
+    name    varchar2(50),
+    score   number
+);
+
+select * from tab;
+desc student;
+select * from student;
+
+insert into student values ('이지은', 95);
+insert into student (name) values ('홍진호');
+insert into student values ('김지수', 96);
+
+update student set score = 22 where name = '홍진호';
+
+commit;
+
+select * from student 
+    where score >= 90;
+select * from student 
+    order by score asc;
+select * from student order by score desc;
+select * from student order by name;
+select * from student order by name desc;
+
+alter table student 
+    add age number;
+
+desc student;
+
+commit;
+

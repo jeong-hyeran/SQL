@@ -1,0 +1,143 @@
+
+	SQL (Structured Query Language)
+	구조화된 질의 언어
+
+public class PhoneBookInfo {
+
+    private String name;
+    pirvate int age;
+    private String pnum;
+
+    // getter and setter
+}
+
+==========================================
+
+create table phonebook (
+    name    varchar2(100),
+    age     number,
+    pnum    varchar2(20)
+);
+
+==========================================
+
+number		정수 혹은 실수
+char		고정 길이 문자열
+varchar2	가변 길이 문자열
+date		날짜
+blob		binary large object
+
+==========================================
+
+DDL (Data Definition Language, 데이터 정의어)
+	데이터베이스 객체를 생성하거나, 수정하거나, 삭제할 때 사용한다
+	테이블, 계정, 시퀀스, 인덱스, 프로시저, 트리거 등등
+- create
+- alter
+- drop
+- truncate
+
+DML (Data Manipulation Language, 데이터 조작어)
+	(주로) 테이블 내부에 데이터를 추가/읽기/수정/삭제 하는데 사용한다
+- insert
+- select
+- update
+- delete
+	
+DCL (Data Control Language, 데이터 제어어)
+	권한의 부여 및 몰수
+	데이터 상태의 저장 및 되돌리기 등을 수행한다
+- grant
+- revoke
+- commit
+- rollback
+
+==========================================
+
+sqlplus / as sysdba
+
+계정 생성 	: create user [계정이름] identified by [비밀번호];
+패스워드 변경 	: alter user [계정이름] identified by [비밀번호];
+계정 잠금 해제	: alter user [계정이름] account unlock;
+권한 부여		: grant [권한종류] to [계정이름];
+계정 삭제		: drop user [계정이름];
+
+계정 조회		: select username from all_users where username like '%검색어%';
+
+==========================================
+
+--테이블 생성
+create table [테이블이름] (
+	[컬럼이름]	[자료형]		[제약조건],
+	[컬럼이름]	[자료형]		[제약조건],
+	[컬럼이름]	[자료형]		[제약조건],
+	[컬럼이름]	[자료형]		[제약조건]
+);
+
+--테이블 전체 조회
+select * from [테이블이름];
+
+--테이블에 데이터 추가
+insert into [테이블이름] values (값1, 값2 ... );
+insert into [테이블이름] (컬럼1, 컬럼2) values (값1, 값2 ... );
+
+--테이블 데이터 삭제
+delete (from) [테이블이름] where [조건절];
+
+--테이블 데이터 수정
+update [테이블이름] 
+	set [컬럼]=[값],
+	    [컬럼]=[값] 
+	where 
+	    [조건절];
+
+--테이블 삭제 (휴지통으로 들어감)
+drop table [테이블이름];
+
+--휴지통 비우기
+purge recyclebin;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

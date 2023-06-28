@@ -1,0 +1,46 @@
+create table movie(
+    name            VARCHAR2(100),
+    ranking         NUMBER,
+    attendance      NUMBER
+    
+ );
+ 
+ SELECT * FROM movie;
+ 
+ insert into movie values('엘리멘탈',1,1375278);
+ insert into movie values('인디아나 존스: 운명의 다이얼',2,1097);
+ insert into movie values('범죄도시3',3,407824);
+ insert into movie values('스파이더맨: 어크로스 더 유니버스',4,9787039);
+ insert into movie values('귀공자',5,412188);
+     
+-- delete from movie; 
+-- 데이터 삭제
+desc movie;
+drop table movie;
+
+select * from movie order by name desc;
+-- 영화명으로 내림차순
+select * from movie order by name asc;
+-- 영화명으로 오름차순
+select * from movie order by ranking asc;
+-- 순위로 내림차순
+
+delete movie where ranking = 8;
+-- '스파이더맨: 어크로스 더 유니버스'8위로 저장한 데이터 삭제
+
+update movie set ranking = 8 where name='스파이더맨: 어크로스 더 유니버스';
+--'스파이더맨: 어크로스 더 유니버스' 4위를 8위로 변경
+
+COMMIT;
+
+alter table movie add openingdate date;
+rollback;
+
+  update movie set openingdate = '2023-06-14' where name = '엘리멘탈';
+  update movie set openingdate = '2023-06-28' where name = '인디아나 존스: 운명의 다이얼';
+  update movie set openingdate = '2023-05-31' where name = '범죄도시3';
+  update movie set openingdate = '2023-06-21' where name = '스파이더맨: 어크로스 더 유니버스';
+  update movie set openingdate = '2023-06-21' where name = '귀공자';
+  
+purge recyclebin;
+-- 휴지통 비우기
