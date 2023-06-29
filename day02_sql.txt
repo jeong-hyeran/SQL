@@ -1,0 +1,92 @@
+CREATE table product(
+    idx         number,
+    name        VARCHAR2(100),
+    price       number,
+    expiryDate  date,
+    memo        VARCHAR2(2000)
+);    
+
+insert into product VALUES (
+    1,
+    '코카콜라(캔) 190ml',
+    900,
+    '24/04/01',
+    '코카콜라 캔 소형'
+    );
+    
+
+
+insert into product values(2,'코카콜라(PET) 500ml', 1500, '24/04/01', '코카콜라 PET 중형');
+insert into product values(3,'코카콜라(PET) 1.5L', 2800, '24/04/01', '코카콜라 PET 대형');
+insert into product values(4,'스프라이트 (캔) 300ml', 1200, '24/05/01', '스프라이트 캔 소형');
+insert into product values(5,'페레로로쉐(3입)', 3000, '23/10/05', '페레로로쉐 매장 입구 진열 품목');
+
+SELECT * FROM product;
+
+--DELETE FROM product;
+
+--drop table product;
+
+-- 상품번호 순으로 정렬하기
+select * from product order by idx;
+
+-- 상품이름 순으로 정렬하기
+SELECT * FROM product ORDER BY name;
+
+-- 유통기한 순으로 정렬하기
+SELECT * FROM product ORDER BY expirtdate;
+
+-- 상품의 가격이 1000원 미만인 상품만 조회하기
+SELECT * FROM product where price < 1000;
+
+-- 상품의 번호가 3번인 상품만 조회하기
+SELECT * FROM product where idx = 3;
+
+-- 상품의 이름이 코카콜라를 포함하는 경우에만 조회하기
+SELECT * FROM product where name like '%코카콜라%';
+---like 포함한다.
+
+-- 상품의 이름에 캔을 포함하는 경우에만 조회하기
+SELECT * FROM product where name like '%캔%';
+
+--상품의 이름에 코카콜라를 포함하면서 가격이 1000원이상이 상품만 조회하기
+SELECT * FROM product 
+    where 
+        name like '%코카콜라%'
+        and -- 두가지 조건을 같이 할때는 and를 사용 하면 된다.
+        price >= 1000;
+        
+-- 상품의 유통기한이 2024년 4월 1일 부터 2024년 4월 30일 사이인 상품만 조회하기
+SELECT * FROM product 
+   where
+       expiryDate between '24/04/01' and '24/04/30';
+        
+-- 상품의 번호가 짝수인 경우만 불러오기
+SELECT * FROM product 
+    where
+        mod(idx, 2) =0;
+        
+-- 수식연산하기, dual은 가상 테이블
+select 10 + 20 from dual;
+
+-- 컬럼 이름에 별칭 부여하기
+select 12*23 as answer from dual;
+--- 연산 결과를 answer이라는 가상테이블에(dual) 컬럼을 만들어줌
+
+select * from product;
+
+commit;
+select * from phonebook;
+desc phonebook;
+ select * from phonebook where name = '정혜란';       
+ delete phonebook where name like '%혜%';
+ ROLLBACK
+        
+        
+  update phonebook set [컬럼]=[값] where [조건절];      
+        
+        
+        
+        
+        
+        
