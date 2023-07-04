@@ -1,0 +1,74 @@
+1. 데이터베이스를 관리하는 소프트웨어를 의미, 대표적 기능은 정의, 생성, 조작, 공유, 보호 , 유지 보수 가 있다.
+
+2. $
+
+3. SELECT BANNER FROM V$VERSION
+
+4. 테이블
+
+5. ALTER USER C##ITBANK IDENTIFIED BY IT;
+
+6. sqlplus / as sysdba
+
+7. grant
+
+8. create, alter, drop, truncate
+
+9. create SEQUENCE customers_seq
+    start with 1000
+    INCREMENT by 1
+    nocache
+    nocycle;
+
+10. 테이블, 뷰, 인덱스, 시퀀스, 프로시저, 스키마
+
+11. 5번
+
+12. 3번
+
+13. 3번
+
+14.   SELECT
+         * FROM member
+         where age >= 29  and gender = '남성';
+
+16. 2번
+
+17. 1번
+
+18. 4번
+
+19.SELECT
+     gender,count(username)
+    FROM student2
+     group by gender 
+     order by gender;
+    
+20. SELECT 
+    CASE 
+        WHEN (AGE BETWEEN 20 AND 29) AND GENDER = '여성' THEN '20대 여성' 
+        WHEN (AGE BETWEEN 30 AND 39) AND GENDER = '여성' THEN '30대 여성' 
+        WHEN (AGE BETWEEN 20 AND 29) AND GENDER = '남성' THEN '20대 남성' 
+        WHEN (AGE BETWEEN 30 AND 39) AND GENDER = '남성' THEN '30대 남성'
+    end as 분류,
+    
+    case 
+        WHEN NOTEBOOK  = 'A' then 'APPLE'
+        WHEN NOTEBOOK  = 'S' then 'SAMSUNG'
+        WHEN NOTEBOOK  = 'L' then 'LG'
+     end AS 제조사,
+     
+    COUNT(*) AS 인원수
+     
+     FROM  student2
+     WHERE AGE < 40
+     
+     GROUP BY notebook,
+     case 
+        WHEN (AGE BETWEEN 20 AND 29) AND GENDER = '여성' THEN '20대 여성' 
+        WHEN (AGE BETWEEN 30 AND 39) AND GENDER = '여성' THEN '30대 여성' 
+        WHEN (AGE BETWEEN 20 AND 29) AND GENDER = '남성' THEN '20대 남성' 
+        WHEN (AGE BETWEEN 30 AND 39) AND GENDER = '남성' THEN '30대 남성'
+        END        
+        
+     ORDER BY 제조사 asc, 분류 desc;
